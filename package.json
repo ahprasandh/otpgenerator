@@ -1,9 +1,9 @@
 {
   "name": "@ahprasandh/otpgenerator",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A simple TOTP generator",
   "main": "bin/app",
-  "homepage":"https://github.com/ahprasandh/otpgenerator",
+  "homepage": "https://github.com/ahprasandh/otpgenerator",
   "repository": {
     "type": "git",
     "url": "git://github.com/ahprasandh/otpgenerator.git"
@@ -11,13 +11,13 @@
   "scripts": {
     "start": "node ."
   },
-  "bin":{
-    "totp":"./bin/app.js"
+  "bin": {
+    "totp": "./bin/app.js"
   },
   "contributors": [
     {
-      "name":"Hari Prasandh A",
-      "email":"ahprasandh@gmail.com"
+      "name": "Hari Prasandh A",
+      "email": "ahprasandh@gmail.com"
     }
   ],
   "author": "ahprasandh",
