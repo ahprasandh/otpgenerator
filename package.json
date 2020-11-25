@@ -1,8 +1,13 @@
 {
-  "name": "otpgenerator",
+  "name": "@ahprasandh/otpgenerator",
   "version": "1.0.0",
-  "description": "OTP generator",
+  "description": "A simple TOTP generator",
   "main": "bin/app",
+  "homepage":"https://github.com/ahprasandh/otpgenerator",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/ahprasandh/otpgenerator.git"
+  },
   "scripts": {
     "start": "node ."
   },
