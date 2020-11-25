@@ -1,0 +1,25 @@
+{
+  "name": "otpgenerator",
+  "version": "1.0.0",
+  "description": "OTP generator",
+  "main": "bin/app",
+  "scripts": {
+    "start": "node ."
+  },
+  "bin":{
+    "totp":"./bin/app.js"
+  },
+  "contributors": [
+    {
+      "name":"Hari Prasandh A",
+      "email":"ahprasandh@gmail.com"
+    }
+  ],
+  "author": "ahprasandh",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^4.1.0",
+    "dotenv": "^8.2.0",
+    "totp-generator": "0.0.8"
+  }
+}
