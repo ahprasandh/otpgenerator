@@ -1,6 +1,6 @@
 {
   "name": "@ahprasandh/otpgenerator",
-  "version": "1.0.1",
+  "version": "1.0.0",
   "description": "A simple TOTP generator",
   "main": "bin/app",
   "homepage": "https://github.com/ahprasandh/otpgenerator",
@@ -24,7 +24,6 @@
   "license": "MIT",
   "dependencies": {
     "chalk": "^4.1.0",
-    "dotenv": "^8.2.0",
     "totp-generator": "0.0.8"
   }
 }

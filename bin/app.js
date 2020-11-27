@@ -7,16 +7,15 @@ var _ProgressBar = _interopRequireDefault(require("../bundle/ProgressBar"));
 var _totpGenerator = _interopRequireDefault(require("totp-generator"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-require('dotenv').config();
-
-const Bar = new _ProgressBar.default();
-if(!process.env.totpsecrets){
-  console.log('\x1b[33m%s\x1b[0m', "Set `totpsecrets` in .env file in "+__dirname+"\n\nRefer .env.example for format"); 
-  return;
+function printerror(msg){
+  console.log(chalk.red(msg));
 }
-const codes = JSON.parse(process.env.totpsecrets);
+const fs = require('fs');
+const chalk = require('chalk');
+let codes;
+const Bar = new _ProgressBar.default();
 let sec = new Date().getSeconds();
+let runtime=0;
 Bar.init(30);
 
 function sleep(ms) {
@@ -25,10 +24,10 @@ function sleep(ms) {
   });
 }
 
-var printTotp = function (name) {
+function printTotp(name) {
   if (name && name.length > 0) {
     !codes[name].period && (codes[name].period = 30);
-    console.log(name + " " + (0, _totpGenerator.default)(codes[name].secret, {
+    console.log(chalk.cyan(name) + " " + (0, _totpGenerator.default)(codes[name].secret, {
       period: codes[name].period
     }) + "\n");
   }
@@ -36,7 +35,7 @@ var printTotp = function (name) {
 
 async function app() {
   console.clear();
-  console.log("*** TOTP GENERATOR @ahprasandh ***\n");
+  console.log(chalk.black.bgCyan("*** TOTP GENERATOR @ahprasandh ***\n"));
 
   for (var s in codes) {
     printTotp(s);
@@ -51,19 +50,34 @@ function updateProgress() {
 
 async function main() {
   app();
-
   while (1) {
     sec++;
     updateProgress();
-
     if (sec > 30) {
       sec -= 30;
+      runtime+=30;
       app();
       updateProgress();
     }
-
+    if(runtime > 60){
+      console.log();
+      return;
+    }
     await sleep(1000);
   }
 }
 
-main();
+fs.readFile(__dirname+'/../config.json', 'utf8', function (err,data) {
+  if (err) {
+    console.log(err)
+    printerror("Config.json not proper");
+    return;
+  }
+  try{
+    codes=JSON.parse(data)
+  }catch(e){
+    printerror("Config.json not proper");
+    return;
+  }
+  main();
+});
