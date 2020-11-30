@@ -3,10 +3,10 @@
 ## Installation
 
 ```bash
-npm install otpgenerator
+npm install .
 ```
 ## Configuration
-Add .env file in installed directory. Refer .env.example
+Add config.json file in installed directory. Refer config.json.example
 
 
 ## Usage
